@@ -5,4 +5,4 @@ if __name__ == '__main__':
     coordinates = client.get_coordinates("São Paulo")
 
     if coordinates:
-        client.get_weather(coordinates)
+        data = client.get_weather(coordinates)
