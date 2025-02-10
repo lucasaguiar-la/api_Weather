@@ -25,11 +25,7 @@ class WeatherClient:
             response.raise_for_status()
             data = response.json()
 
-            print(f'Latitude: {data[0]['lat']}\n'
-            f'Longitude: {data[0]['lon']}\n'
-            f'Estado: {data[0]['state']}\n'
-            f'País: {data[0]['country']}'
-            )
+            print(f'Estado: {data[0]['state']}')
 
             return data
         except requests.exceptions.HTTPError as e:
