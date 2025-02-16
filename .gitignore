@@ -1,7 +1,15 @@
+[CACHE FILES]
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
+data/*.json
+
+[VENV]
 /venv
+
+[TEST DIR AND FILES]
 /tests
+
+[ENV]
 .env

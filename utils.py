@@ -1,0 +1,19 @@
+from math import floor, ceil
+
+class Utils:
+    def __init__(self):
+        pass
+    
+    def format_temperature(number):
+        number_string = str(number)
+
+        if (len(number_string)) > 0:
+            parts = number_string.split('.')
+            decimal_part = parts[1]
+
+            if (int(decimal_part) < 50):
+                return floor(number)
+            elif (int(decimal_part) > 50):
+                return ceil(number)
+        else:
+            return None
