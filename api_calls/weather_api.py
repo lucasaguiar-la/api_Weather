@@ -26,7 +26,7 @@ class Client:
             )
             response.raise_for_status()
             data = response.json()
-            with open('./data/data_coordinates.json', 'w') as file:
+            with open('./data/coordinates_data.json', 'w') as file:
                 json.dump(data, file)
             print(f'\nLocalidade: {data[0]['state']}')
 
@@ -53,7 +53,7 @@ class Client:
             )
             response.raise_for_status()
             data = response.json()
-            with open('./data/data_weather.json', 'w') as file:
+            with open('./data/weather_data.json', 'w') as file:
                 json.dump(data, file)
             temperature = Utils.format_temperature(data['main']['temp'])
             print(f'Temperatura atual: {temperature:.0f} C°\n'
