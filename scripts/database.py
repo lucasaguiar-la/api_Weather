@@ -13,4 +13,13 @@ class Database:
         )
         self.cur = self.conn.cursor()
 
-    
+    def insert_location(self, city, state, country, latitude, longitude):
+        query = ('''
+            INSERT INTO locations (city, state, country, latitude, longitude)
+            VALUES (%s, %s, %s, %s, %s)
+                RETURNING id
+        ''')
+        self.cur.execute(query, (city, state, country, latitude, longitude))
+        locations_id = self.cur.fetchone()[0]
+        self.conn.commit()
+        return locations_id
