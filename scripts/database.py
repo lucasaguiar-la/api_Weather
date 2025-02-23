@@ -23,3 +23,15 @@ class Database:
         locations_id = self.cur.fetchone()[0]
         self.conn.commit()
         return locations_id
+
+    def insert_climate(self, location_id, temperature, description):
+        query = ('''
+            INSERT INTO climate_data (location_id, temperature, description)
+            VALUES (%s, %s, %s)
+        ''')
+        self.cur.execute(query, (location_id, temperature, description))
+        self.conn.commit()
+
+    def close(self):
+        self.cur.close()
+        self.conn.close()
