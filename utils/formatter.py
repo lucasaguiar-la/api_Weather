@@ -3,7 +3,7 @@ from math import floor, ceil
 class Formatter:
     def __init__(self):
         pass
-    
+
     def format_temperature(number):
         number_string = str(number)
 
