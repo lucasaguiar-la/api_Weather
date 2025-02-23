@@ -1,6 +1,6 @@
 from math import floor, ceil
 
-class Utils:
+class Formatter:
     def __init__(self):
         pass
     

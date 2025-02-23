@@ -2,7 +2,7 @@ import os
 import requests
 import json
 from dotenv import load_dotenv
-from utils import Utils
+from utils.formatter import Formatter
 
 load_dotenv()
 
@@ -11,7 +11,7 @@ class Client:
         self.api_key = os.getenv('API_TOKEN')
         self.coordinates_url = os.getenv('COORDINATES_URL')
         self.weather_url = os.getenv('WEATHER_URL')
-        self.utils = Utils()
+        self.utils = Formatter()
 
     def get_coordinates(self, city):
         params = {
@@ -55,7 +55,7 @@ class Client:
             data = response.json()
             with open('./data/weather_data.json', 'w') as file:
                 json.dump(data, file)
-            temperature = Utils.format_temperature(data['main']['temp'])
+            temperature = self.utils.format_temperature(data['main']['temp'])
             print(f'Temperatura atual: {temperature:.0f} C°\n'
                 f'Descrição: {data['weather'][0]['description'].capitalize()}\n')
             
