@@ -35,7 +35,7 @@ class Client:
             data = response.json()
             with open('./data/coordinates_data.json', 'w') as file:
                 json.dump(data, file)
-            print(f'\nLocalidade: {data[0]['state']}')
+            print(f'\nLocalidade: {data[0]["state"]}')
 
             location_id = self.db.insert_location(
                 state=data[0]['name'],
@@ -71,7 +71,7 @@ class Client:
                 json.dump(data, file)
             temperature = Formatter.format_temperature(data['main']['temp'])
             print(f'Temperatura atual: {temperature:.0f} C°\n'
-                f'Descrição: {data['weather'][0]['description'].capitalize()}\n')
+                f'Descrição: {data["weather"][0]["description"].capitalize()}\n')
 
             self.db.insert_climate(
                 location_id=location_id,
