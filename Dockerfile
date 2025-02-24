@@ -20,4 +20,4 @@ ENV PYTHONUNBUFFERED=1
 
 EXPOSE 5000
 
-CMD ["python", "seu_arquivo_principal.py"]
+CMD ["python", "main.py"]
