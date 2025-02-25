@@ -65,7 +65,7 @@ docker run weather-api
 1. Clone o repositório
 2. Instale as dependências:
 ```python
-pip install - r requiriments.txt
+pip install -r requiriments.txt
 ```
 3. Configure as variáveis de ambiente
 4. Execute a aplicação:
