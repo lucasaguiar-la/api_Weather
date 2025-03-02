@@ -33,6 +33,11 @@ class Database:
         self.cur.execute(query, (location_id, temperature, description))
         self.conn.commit()
 
+    def get_history(self):
+        query = ('SELECT * FROM climate_data')
+        self.cur.execute(query)
+        return self.cur.fetchall()
+
     def close(self):
         self.cur.close()
         self.conn.close()
