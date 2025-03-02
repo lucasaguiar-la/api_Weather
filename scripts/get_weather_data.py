@@ -1,6 +1,7 @@
 import os
 import requests
 import json
+
 from dotenv import load_dotenv
 from scripts.database import Database
 from utils.formatter import Formatter
@@ -33,10 +34,15 @@ class Client:
             )
             response.raise_for_status()
             data = response.json()
+
+            if not data:
+                print('Nenhuma coordenada encontrada para esta cidade')
+                return None
+
             with open('./data/coordinates_data.json', 'w') as file:
                 json.dump(data, file)
-            print(f'\nLocalidade: {data[0]["state"]}')
 
+            print(f'\nLocalidade: {data[0]["state"]}')
             location_id = self.db.insert_location(
                 state=data[0]['name'],
                 country=data[0]['country'],
@@ -44,9 +50,10 @@ class Client:
                 longitude=data[0]['lon']
             )
 
-            return location_id, data
+            self.get_weather(location_id, data)
+
         except requests.exceptions.HTTPError as e:
-            print(f'Falha na requisição: {e}')
+            print(f'Falha na requisição de coordenadas: {e}')
             return None
 
     def get_weather(self, location_id, coordinates):

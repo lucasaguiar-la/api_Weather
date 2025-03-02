@@ -1,10 +1,9 @@
-from api_calls.weather_api import Client
+from fastapi import FastAPI
+from api.endpoints import router as api_router
 
-city = 'São Paulo'
+app = FastAPI()
+app.include_router(api_router)
 
-if __name__ == '__main__':
-    client  = Client()
-    locations_id, coordinates = client.get_coordinates(city)
-    if locations_id:
-        client.get_weather(locations_id, coordinates)
-    client.db.close()
+@app.get('/')
+def read_root():
+    return {'message': 'Bem0vindo à API de clima!'}
