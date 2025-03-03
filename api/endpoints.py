@@ -39,7 +39,31 @@ def get_weather(city: str):
 
 @router.get('/history')
 def get_history():
-    return db.get_history()
+    try:
+        result = []
+        historical = db.get_history()
+
+        for record in historical:
+            city = str(record[0])
+            country = str(record[1])
+            temperature = float(record[2])
+            description = str(record[3])
+            data_query = str(record[4])
+
+            result.append({
+                'Cidade': f'{city.capitalize()}',
+                'País': f'{country.upper()}',
+                'Temperatura': f'{temperature:.0f} Cº',
+                'Descrição': f'{description.capitalize()}',
+                'data_query': f'{data_query.split()[0]}'
+            })
+
+        return result
+
+    except HTTPException as e:
+        print(f'Algo deu errado ao tentar requisitar o histórico...')
+        return e
+
 
 @router.delete('/delete/{record_id}')
 def delete_record(record_id: int):

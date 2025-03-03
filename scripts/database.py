@@ -34,15 +34,14 @@ class Database:
         self.conn.commit()
 
     def get_history(self):
-        query = ('SELECT * FROM climate_data')
+        query = '''
+            SELECT state, country, temperature, description, data_query 
+            FROM locations
+            JOIN climate_data ON locations.id = climate_data.location_id 
+        '''
         self.cur.execute(query)
         return self.cur.fetchall()
-    
-    def record_exists(self, record_id):
-        query = ('SELECT 1 FROM climate_data WHERE id = %s')
-        self.cur.execute(query, (record_id,))
-        return self.cur.fetchone() is not None
-    
+
     def delete_record(self, record_id):
         select_query = ('SELECT DISTINCT state, data_query FROM locations, climate_data')
         self.cur.execute(select_query, (record_id,))
@@ -58,12 +57,17 @@ class Database:
         
     def clear_data(self):
         try:
-            self.cur.execute('TRUNCATE TABLE climate_data RESTART IDENTITY CASCADE')
+            self.cur.execute('TRUNCATE TABLE climate_data, locations RESTART IDENTITY CASCADE')
             self.conn.commit()
         
         except Exception as e:
             self.conn.rollback()
             raise e
+
+    def record_exists(self, record_id):
+        query = ('SELECT 1 FROM climate_data WHERE id = %s')
+        self.cur.execute(query, (record_id,))
+        return self.cur.fetchone() is not None
 
     def close(self):
         self.cur.close()
