@@ -60,3 +60,14 @@ def delete_record(record_id: int):
     except HTTPException as e:
         print(f'\nAlgo deu errado ao tentar deletar o registro: {e}')
         return e
+
+@router.delete('/all')
+def delete_all_records():
+    try:
+        db.clear_data()
+        return {
+            'Sucesso': 'Todos os dados foram apagados com êxito!'
+        }
+    except HTTPException as e:
+        print(f'\nAlgo deu errado ao tentar deletar o registro: {e}')
+        return e

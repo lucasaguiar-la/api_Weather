@@ -55,6 +55,15 @@ class Database:
             return record_data
         else:
             return None
+        
+    def clear_data(self):
+        try:
+            self.cur.execute('TRUNCATE TABLE climate_data RESTART IDENTITY CASCADE')
+            self.conn.commit()
+        
+        except Exception as e:
+            self.conn.rollback()
+            raise e
 
     def close(self):
         self.cur.close()
