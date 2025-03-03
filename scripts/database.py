@@ -37,6 +37,16 @@ class Database:
         query = ('SELECT * FROM climate_data')
         self.cur.execute(query)
         return self.cur.fetchall()
+    
+    def record_exists(self, record_id):
+        query = ('SELECT 1 FROM climate_data WHERE id = %s')
+        self.cur.execute(query, (record_id,))
+        return self.cur.fetchone() is not None
+    
+    def delete_record(self, record_id):
+        query = ('DELETE FROM climate_data WHERE id = %s')
+        self.cur.execute(query, (record_id,))
+        self.conn.commit()
 
     def close(self):
         self.cur.close()
