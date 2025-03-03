@@ -50,7 +50,7 @@ class Client:
                 longitude=data[0]['lon']
             )
 
-            self.get_weather(location_id, data)
+            return self.get_weather(location_id, data)
 
         except requests.exceptions.HTTPError as e:
             print(f'Falha na requisição de coordenadas: {e}')

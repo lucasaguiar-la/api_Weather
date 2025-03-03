@@ -44,9 +44,17 @@ class Database:
         return self.cur.fetchone() is not None
     
     def delete_record(self, record_id):
-        query = ('DELETE FROM climate_data WHERE id = %s')
-        self.cur.execute(query, (record_id,))
-        self.conn.commit()
+        select_query = ('SELECT DISTINCT state, data_query FROM locations, climate_data')
+        self.cur.execute(select_query, (record_id,))
+        record_data = self.cur.fetchone()
+
+        if record_data:
+            delete_query = ('DELETE FROM climate_data WHERE id = %s')
+            self.cur.execute(delete_query, (record_id,))
+            self.conn.commit()
+            return record_data
+        else:
+            return None
 
     def close(self):
         self.cur.close()
