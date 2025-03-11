@@ -15,7 +15,7 @@ class Database:
         query = ('''
             INSERT INTO locations (state, country, latitude, longitude)
             VALUES (%s, %s, %s, %s)
-                RETURNING id
+                RETURNING id_location
         ''')
 
         self.cur.execute(query, (state, country, latitude, longitude))
@@ -35,9 +35,9 @@ class Database:
 
     def get_history(self):
         query = '''
-            SELECT state, country, temperature, description, data_query 
+            SELECT state, country, temperature, description, data_query, id_location
             FROM locations
-            JOIN climate_data ON locations.id = climate_data.location_id 
+            JOIN climate_data ON locations.id_location = climate_data.location_id 
         '''
         self.cur.execute(query)
         return self.cur.fetchall()

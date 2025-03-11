@@ -49,8 +49,10 @@ def get_history():
             temperature = float(record[2])
             description = str(record[3])
             data_query = str(record[4])
+            record_id = int(record[5])
 
             result.append({
+                'ID': f'{record_id}',
                 'Cidade': f'{city.capitalize()}',
                 'País': f'{country.upper()}',
                 'Temperatura': f'{temperature:.0f} Cº',

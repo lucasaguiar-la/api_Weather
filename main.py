@@ -6,4 +6,4 @@ app.include_router(api_router)
 
 @app.get('/')
 def read_root():
-    return {'message': 'Bem-vindo à API de clima!'}
+    return {'Olá': 'Bem-vindo à Weather API!'}
