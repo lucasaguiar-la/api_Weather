@@ -1,0 +1,140 @@
+# Weather API Client
+<<<<<<< HEAD
+Este é um projeto Python que fornece uma API REST para consulta de previsão do tempo, armazenando os dados em um banco de dados PostgreSQL.
+
+---
+
+## Sobre o Projeto
+O projeto consiste em uma API FastAPI que permite consultar dados meteorológicos de cidades, salvando as informações em um banco de dados para posterior análise. A aplicação utiliza a API OpenWeatherMap para obter coordenadas geográficas e dados climáticos.
+
+## Tecnologias Utilizadas
+- Python 3.9
+- FastAPI
+- PostgreSQL
+- Docker
+- Bibliotecas Python:
+  - fastapi
+  - requests
+  - psycopg2-binary
+  - python-dotenv
+  - outras (ver requirements.txt)
+
+## Estrutura do Projeto
+```
+api_Weather/
+    ├── api/
+    │   ├── __init__.py
+    │   └── endpoints.py        # Rotas da API
+    ├── data/
+    │   ├── coordinates_data.json   # Cache de dados de coordenadas
+    │   └── weather_data.json       # Cache de dados meteorológicos
+    ├── scripts/
+    │   ├── __init__.py
+    │   ├── database.py            # Gerenciamento do banco de dados
+    │   └── get_weather_data.py    # Cliente da API externa
+    ├── utils/
+    │   ├── __init__.py
+    │   └── formatter.py           # Utilitários de formatação
+    ├── Dockerfile
+    ├── main.py                    # Ponto de entrada da aplicação
+    └── requirements.txt
+```
+
+## Configuração
+
+### Variáveis de Ambiente
+É necessário criar um arquivo `.env` na raiz do projeto com as seguintes variáveis:
+```
+API_TOKEN=seu_token_openweathermap
+=======
+#### Variáveis de Ambiente
+É necessário criar um arquivo `.env` na raiz do projeto com as seguintes variáveis:
+```
+API_TOKEN=seu_token_api
+COORDINATES_URL=url_api_coordenadas
+WEATHER_URL=url_api_clima
+>>>>>>> fb1d814469f127d1e38f64206459d3777823808b
+DB_NAME=nome_banco
+USER=usuario_banco
+PASSWORD=senha_banco
+HOST=host_banco
+PORT=porta_banco
+```
+<<<<<<< HEAD
+
+### Banco de Dados
+O projeto utiliza PostgreSQL e requer duas tabelas principais:
+- `locations`: Armazena dados de localização
+- `climate_data`: Armazena dados meteorológicos
+
+## Endpoints da API
+
+- `GET /`: Página inicial
+- `GET /weather?city={cidade}`: Consulta temperatura atual
+- `GET /history`: Lista histórico de consultas
+- `DELETE /delete/{record_id}`: Remove um registro específico
+- `DELETE /all`: Limpa todos os registros
+
+## Docker
+Para executar o projeto usando Docker:
+```bash
+docker build -t weather-api .
+docker run -p 8000:8000 weather-api
+```
+
+## Como Executar Localmente
+1. Clone o repositório
+2. Instale as dependências:
+```bash
+pip install -r requirements.txt
+```
+3. Configure as variáveis de ambiente
+4. Execute a aplicação:
+```bash
+uvicorn main:app --reload
+```
+
+## Funcionalidades
+- API REST com FastAPI
+- Consulta de dados meteorológicos por cidade
+- Histórico de consultas
+- Armazenamento em PostgreSQL
+- Formatação inteligente de temperaturas
+- Documentação automática da API (Swagger UI)
+
+## Contribuição
+Contribuições são bem-vindas! Sinta-se à vontade para enviar um Pull Request ;)
+=======
+#### Banco de Dados
+O projeto utiliza PostgreSQL e requer duas tabelas principais:
+ - `locations`: Armazena dados de localização
+ - `climate_data`: Armazena dados meteorológicos
+
+## Docker
+Para executar o projeto usando Docker:
+```
+docker build -t weather-api .
+docker run weather-api
+```
+
+## Como Executar
+1. Clone o repositório
+2. Instale as dependências:
+```python
+pip install -r requiriments.txt
+```
+3. Configure as variáveis de ambiente
+4. Execute a aplicação:
+```python
+python main.py
+```
+
+## Funcionalidades
+ - Consulta de coordenadas geográficas por cidade
+ - Obtenção de dados meteorológicos atuais
+ - Armazenamento automático em banco de dados
+ - Formatação inteligente de temperaturas
+
+## Contribuição
+Contribuições são bem-vindas! Sinta-se à vontade para enviar um Pull Request.
+>>>>>>> fb1d814469f127d1e38f64206459d3777823808b
