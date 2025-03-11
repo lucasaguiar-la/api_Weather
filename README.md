@@ -9,7 +9,7 @@ O projeto consiste em uma API FastAPI que permite consultar dados meteorológico
 ## Tecnologias Utilizadas
 - Python 3.9
 - FastAPI
-- PostgreSQL
+- **PostgreSQL**
 - Docker
 - Bibliotecas Python:
   - fastapi

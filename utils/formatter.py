@@ -8,8 +8,11 @@ class Formatter:
         number_string = str(number)
 
         if (len(number_string)) > 0:
-            parts = number_string.split('.')
-            decimal_part = parts[1]
+            try:
+                parts = number_string.split('.')
+                decimal_part = parts[1]
+            except Exception:
+                decimal_part = 0
 
             if (int(decimal_part) < 50):
                 return floor(number)
