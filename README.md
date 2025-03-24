@@ -92,5 +92,5 @@ uvicorn main:app --reload
 - Formatação inteligente de temperaturas
 - Documentação automática da API (Swagger UI)
 
-## Contribuição
-Contribuições são bem-vindas! Sinta-se à vontade para enviar um Pull Request ;)
+## Licença
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](./LICENSE) para mais detalhes.
