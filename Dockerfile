@@ -3,15 +3,17 @@ FROM python:3.9-slim
 WORKDIR /app
 
 RUN apt-get update && \
+    apt-get upgrade -y && \
     apt-get install -y --no-install-recommends \
-    gcc \
-    libpq-dev \
-    build-essential \
-    libc6-dev && \
+        gcc \
+        libpq-dev \
+        build-essential \
+        libc6-dev && \
+    apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt --upgrade
 
 COPY . .
 
