@@ -1,0 +1,13 @@
+# Core API Dependencies
+fastapi>=0.115.10
+uvicorn>=0.34.0
+pydantic>=2.10.6
+
+# Database
+psycopg2>=2.9.10
+
+# HTTP Client
+requests>=2.32.3
+
+# Environment Variables
+python-dotenv>=1.0.1
