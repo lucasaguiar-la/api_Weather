@@ -1,19 +1,21 @@
-FROM python:3.9-slim
+FROM python:3.13-slim
 
 WORKDIR /app
 
 RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y --no-install-recommends \
-        gcc \
         libpq-dev \
-        build-essential \
-        libc6-dev && \
+        build-essential && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt --upgrade
+RUN pip install --no-cache-dir pip-tools
+
+COPY requirements.in .
+
+RUN pip-compile requirements.in && \
+    pip-sync requirements.txt
 
 COPY . .
 

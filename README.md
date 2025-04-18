@@ -36,6 +36,7 @@ api_Weather/
     │   └── formatter.py           # Utilitários de formatação
     ├── Dockerfile
     ├── main.py                    # Ponto de entrada da aplicação
+    ├── requirements.in
     └── requirements.txt
 ```
 
@@ -68,7 +69,7 @@ O projeto utiliza PostgreSQL e requer duas tabelas principais:
 ## Docker
 Para executar o projeto usando Docker:
 ```bash
-docker build -t weather-api .
+docker build -t weather-api:latest .
 docker run -p 8000:8000 weather-api
 ```
 
