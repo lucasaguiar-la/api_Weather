@@ -48,7 +48,7 @@ class Database:
         record_data = self.cur.fetchone()
 
         if record_data:
-            delete_query = ('DELETE FROM climate_data WHERE id = %s')
+            delete_query = ('DELETE FROM climate_data WHERE id_climate = %s')
             self.cur.execute(delete_query, (record_id,))
             self.conn.commit()
             return record_data
@@ -65,7 +65,7 @@ class Database:
             raise e
 
     def record_exists(self, record_id):
-        query = ('SELECT 1 FROM climate_data WHERE id = %s')
+        query = ('SELECT 1 FROM climate_data WHERE id_climate = %s')
         self.cur.execute(query, (record_id,))
         return self.cur.fetchone() is not None
 

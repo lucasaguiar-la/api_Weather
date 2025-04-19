@@ -40,7 +40,7 @@ class Client:
                 return None
 
             with open('./data/coordinates_data.json', 'w') as file:
-                json.dump(data, file)
+                json.dump(data, file, indent=4)
 
             print(f'\nLocalidade: {data[0]["state"]}')
             location_id = self.db.insert_location(
