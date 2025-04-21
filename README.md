@@ -1,5 +1,5 @@
 # Weather API Client
-Este é um projeto Python que fornece uma API REST para consulta de previsão do tempo, armazenando os dados em um banco de dados PostgreSQL.
+Este é um projeto Python que fornece uma API REST para consulta de previsão do tempo, armazenando os dados em um banco de dados PostgreSQL. A aplicação é executável via Docker Compose para facilitar a configuração dos serviços.
 
 ---
 
@@ -7,7 +7,7 @@ Este é um projeto Python que fornece uma API REST para consulta de previsão do
 O projeto consiste em uma API FastAPI que permite consultar dados meteorológicos de cidades, salvando as informações em um banco de dados para posterior análise. A aplicação utiliza a API OpenWeatherMap para obter coordenadas geográficas e dados climáticos.
 
 ## Tecnologias Utilizadas
-- Python 3.9
+- Python 3.13
 - FastAPI
 - PostgreSQL
 - Docker

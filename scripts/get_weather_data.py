@@ -10,7 +10,7 @@ load_dotenv()
 
 class Client:
     def __init__(self):
-        self.api_key = os.getenv('API_TOKEN')
+        self.api_key = os.getenv('API_KEY')
         self.coordinates_url = 'http://api.openweathermap.org/geo/1.0/direct'
         self.weather_url = 'https://api.openweathermap.org/data/2.5/weather'
         self.db = Database(
