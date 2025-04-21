@@ -11,6 +11,35 @@ class Database:
         )
         self.cur = self.conn.cursor()
 
+    def create_tables(self):
+        try:
+            self.cur.execute('''
+            CREATE TABLE IF NOT EXISTS locations (
+                id_locations SERIAL PRIMARY KEY,
+                state VARCHAR(100),
+                county VARCHAR(100),
+                latitude DECIMAL(10,8),
+                longitude DECIMAL(11,8)
+            );
+        ''')
+            
+            self.cur.execute('''
+            CREATE TABLE IF NOT EXISTS climate_data (
+                id_climate SERIAL PRIMARY KEY,
+                location_id INT REFERENCES locations(id_location),
+                temperature DECIMAL(5,2),
+                description VARCHAR(200),
+                data_query TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            );
+        ''')
+            
+            self.conn.commit()
+            print('Tabelas criadas com sucesso!')
+
+        except Exception as e:
+            self.conn.rollback()
+            print(f'Erro ao criar tabelas: {e}')
+
     def insert_location(self, state, country, latitude, longitude):
         query = ('''
             INSERT INTO locations (state, country, latitude, longitude)
