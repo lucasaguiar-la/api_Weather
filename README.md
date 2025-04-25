@@ -1,10 +1,10 @@
 # Weather API Client
-Este é um projeto Python que fornece uma API REST para consulta de previsão do tempo, armazenando os dados em um banco de dados PostgreSQL. A aplicação é executável via Docker Compose para facilitar a configuração dos serviços.
+Este é um projeto Python que fornece uma API REST para consulta de previsão do tempo, armazenando os dados em um banco de dados PostgreSQL. A aplicação pode ser executada via Docker Compose, facilitando a configuração dos serviços.
 
 ---
 
 ## Sobre o Projeto
-O projeto consiste em uma API FastAPI que permite consultar dados meteorológicos de cidades, salvando as informações em um banco de dados para posterior análise. A aplicação utiliza a API OpenWeatherMap para obter coordenadas geográficas e dados climáticos.
+O projeto consiste em uma API que permite consultar dados meteorológicos de cidades, salvando as informações em um banco de dados para posterior análise. A aplicação utiliza a API OpenWeatherMap para obter coordenadas geográficas e dados climáticos.
 
 ## Tecnologias Utilizadas
 - Python 3.13
@@ -12,7 +12,6 @@ O projeto consiste em uma API FastAPI que permite consultar dados meteorológico
 - PostgreSQL
 - Docker
 - Bibliotecas Python:
-  - fastapi
   - requests
   - psycopg2-binary
   - python-dotenv
@@ -69,18 +68,20 @@ O projeto utiliza PostgreSQL e requer duas tabelas principais:
 ## Docker
 Para executar o projeto usando Docker:
 ```bash
-docker build -t weather-api:latest .
+docker build -t weather-api .
 docker run -p 8000:8000 weather-api
 ```
 
 ## Como Executar Localmente
 1. Clone o repositório
+```bash
+git clone https://github.com/lucasaguiar-la/api_Weather
+```
 2. Instale as dependências:
 ```bash
 pip install -r requirements.txt
 ```
-3. Configure as variáveis de ambiente
-4. Execute a aplicação:
+3. Execute a aplicação:
 ```bash
 uvicorn main:app --reload
 ```
