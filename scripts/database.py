@@ -26,7 +26,7 @@ class Database:
             self.cur.execute('''
             CREATE TABLE IF NOT EXISTS climate_data (
                 id_climate SERIAL PRIMARY KEY,
-                location_id INT REFERENCES locations(id_location),
+                location_id INT REFERENCES locations(id_locations),
                 temperature DECIMAL(5,2),
                 description VARCHAR(200),
                 data_query TIMESTAMP DEFAULT CURRENT_TIMESTAMP

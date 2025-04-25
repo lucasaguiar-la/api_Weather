@@ -45,7 +45,7 @@ api_Weather/
 ### Variáveis de Ambiente
 É necessário criar um arquivo `.env` na raiz do projeto com as seguintes variáveis:
 ```
-API_TOKEN=seu_token_openweathermap
+API_KEY=seu_token_openweathermap
 DB_NAME=nome_banco
 USER=usuario_banco
 PASSWORD=senha_banco
