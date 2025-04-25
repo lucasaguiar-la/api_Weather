@@ -76,6 +76,7 @@ docker run -p 8000:8000 weather-api
 1. Clone o repositório
 ```bash
 git clone https://github.com/lucasaguiar-la/api_Weather
+cd api_Weather
 ```
 2. Instale as dependências:
 ```bash
