@@ -53,7 +53,7 @@ PORT=porta_banco
 ```
 
 ### Banco de Dados
-O projeto utiliza PostgreSQL e requer duas tabelas principais:
+O projeto utiliza PostgreSQL e requer duas tabelas principais (que ja são criados automaticamente):
 - `locations`: Armazena dados de localização
 - `climate_data`: Armazena dados meteorológicos
 
