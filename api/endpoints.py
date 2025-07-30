@@ -1,7 +1,7 @@
 import os
 
 from fastapi import APIRouter, HTTPException
-from scripts.database import Database
+from database.database import Database
 from scripts.get_weather_data import Client
 from dotenv import load_dotenv
 

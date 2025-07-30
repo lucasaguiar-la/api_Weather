@@ -3,7 +3,7 @@ import requests
 import json
 
 from dotenv import load_dotenv
-from scripts.database import Database
+from database.database import Database
 from utils.formatter import Formatter
 
 load_dotenv()
